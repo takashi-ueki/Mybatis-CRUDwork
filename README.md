@@ -33,3 +33,8 @@ MySQLの情報をCRUD処理を通じてlocalhostに反映させます。
       - カテゴリ
       - 金額     
      から構成しています。
+     
+   - ### 環境     
+     - OS：Windows１１
+     - エディタ:IntelliJ
+     - ターミナル：Git
