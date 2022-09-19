@@ -3,6 +3,11 @@ Mybatisを使用してREST APIとDatabaseを連携するレポジトリです。
 MySQLの情報をCRUD処理を通じてlocalhostに反映させます。
 まずはCreate処理です。（２２／９／２０）
 
+- ## 出力結果
+
+![image](https://user-images.githubusercontent.com/107293004/191079402-837da683-b408-4422-89bd-d28de0b2690c.png)
+
+
 - ## Description
   パッケージを以下のように分けて、記述しています。
 
