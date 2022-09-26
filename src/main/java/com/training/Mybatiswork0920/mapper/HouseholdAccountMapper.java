@@ -14,4 +14,6 @@ public interface HouseholdAccountMapper {
 
     @Select("SELECT * FROM accounts WHERE id = #{id}")
     Optional<HouseholdAccount> findById(int id);
+
+
 }
