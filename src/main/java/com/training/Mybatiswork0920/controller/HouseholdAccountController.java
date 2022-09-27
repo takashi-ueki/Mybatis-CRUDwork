@@ -12,23 +12,56 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-public class HouseholdAccountController<CreateForm> {
+public class HouseholdAccountController {
     private final HouseholdAccountService householdAccountService;
 
     public HouseholdAccountController(HouseholdAccountService householdAccountService) {
         this.householdAccountService = householdAccountService;
     }
+
     @PostMapping("/accounts")
-    public ResponseEntity<String> create(@RequestBody CreateForm form) { //Json形式でリクエスト飛ばす
+    public ResponseEntity<String> create(@RequestBody CreateForm form) {
         // 登録処理は省略
-        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")//指定された URI 文字列で初期化されるビルダーを作成。
+        String urlString = "http://localhost:8080";
+        URI url = UriComponentsBuilder.fromUriString(urlString)
                 .path("/accounts/id") // id部分は実際に登録された際に発行したidを設定する
                 .build()
                 .toUri();
-        return ResponseEntity.created(url).body("name successfully created");
+        return ResponseEntity.created(url).body("\"message\":\"successfully created\"");
     }
+
     @GetMapping("/accounts")
     public List<HouseholdAccountResponse> getNames() {
         return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
+    }
+
+    public static class CreateForm {
+        private String ex_in;
+        private String category;
+        private int amount;
+
+        public String getEx_in() {
+            return ex_in;
+        }
+
+        public void setEx_in(String ex_in) {
+            this.ex_in = ex_in;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+
+        public void setAmount(int amount) {
+            this.amount = amount;
+        }
     }
 }

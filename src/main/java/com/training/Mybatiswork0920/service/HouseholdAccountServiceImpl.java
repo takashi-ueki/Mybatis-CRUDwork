@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service  //業務処理を行うのでこのアノテーションを付与
+@Service
 public class HouseholdAccountServiceImpl implements HouseholdAccountService {
     private HouseholdAccountMapper householdAccountMapper;
 
-    //mapperから処理を呼び出してコンストラクター生成
+
     public HouseholdAccountServiceImpl(HouseholdAccountMapper householdAccountMapper) {
         this.householdAccountMapper = householdAccountMapper;
     }
