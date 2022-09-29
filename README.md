@@ -14,6 +14,8 @@ MySQLの情報をCRUD処理を通じてlocalhostに反映させます。
 ![image](https://user-images.githubusercontent.com/107293004/193078218-99eafc1d-f8d3-4728-abc3-fe15e3260bd1.png)
 
 - ###DELETE処理
+![image](https://user-images.githubusercontent.com/107293004/193086957-58266cf0-f752-4888-aa76-98dcbbd44a28.png)
+
 
 
 
