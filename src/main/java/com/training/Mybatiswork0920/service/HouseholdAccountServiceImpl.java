@@ -10,11 +10,12 @@ import java.util.List;
 public class HouseholdAccountServiceImpl implements HouseholdAccountService {
     private HouseholdAccountMapper householdAccountMapper;
 
+
     public HouseholdAccountServiceImpl(HouseholdAccountMapper householdAccountMapper) {
         this.householdAccountMapper = householdAccountMapper;
     }
 
-    @Override
+    @Override //インターフェースの処理を実行
     public List<HouseholdAccount> findAll() {
         return householdAccountMapper.findAll();
     }
