@@ -30,11 +30,14 @@ public class HouseholdAccountController {
 
 
     @GetMapping("/accounts")
-    public List<HouseholdAccountResponse> filterAccount(@RequestParam(name = "category", defaultValue = "") String category) {
-        return householdAccountService.findAll().stream()
-                .map(HouseholdAccountResponse::new)
-                .filter(c -> c.getCategory().contains(category))
-                .toList();
+    public List<HouseholdAccountResponse> filterAccount(@RequestParam(name = "category", required = false) String category) {
+        if (category == null) {
+            return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
+        } else {
+            return householdAccountService.findByCategory(category).stream()
+                    .map(HouseholdAccountResponse::new)
+                    .toList();
+        }
     }
 
     @PatchMapping("accounts/{id}")
