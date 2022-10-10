@@ -28,16 +28,16 @@ public class HouseholdAccountController {
         return ResponseEntity.created(url).body("\"message\":\"successfully created\"");
     }
 
+    @GetMapping("/accounts/all")
+    public List<HouseholdAccountResponse> getAccount() {
+        return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
+    }
 
     @GetMapping("/accounts")
-    public List<HouseholdAccountResponse> filterAccount(@RequestParam(name = "category", required = false) String category) {
-        if (category == null) {
-            return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
-        } else {
-            return householdAccountService.findByCategory(category).stream()
-                    .map(HouseholdAccountResponse::new)
-                    .toList();
-        }
+    public List<HouseholdAccountResponse> getAccountsByCategory(@RequestParam(name = "category", defaultValue = "") String category) {
+        return householdAccountService.findByCategory(category).stream()
+                .map(HouseholdAccountResponse::new)
+                .toList();
     }
 
     @PatchMapping("accounts/{id}")
