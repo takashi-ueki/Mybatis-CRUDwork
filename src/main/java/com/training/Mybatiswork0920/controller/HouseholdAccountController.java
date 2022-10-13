@@ -28,12 +28,12 @@ public class HouseholdAccountController {
         return ResponseEntity.created(url).body("\"message\":\"successfully created\"");
     }
 
-    @GetMapping("/accounts/all")
+    @GetMapping("/accounts")
     public List<HouseholdAccountResponse> getAccount() {
         return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
     }
 
-    @GetMapping("/accounts")
+    @GetMapping("/accounts/search")
     public List<HouseholdAccountResponse> getAccountsByCategory(@RequestParam(name = "category", defaultValue = "") String category) {
         return householdAccountService.findByCategory(category).stream()
                 .map(HouseholdAccountResponse::new)

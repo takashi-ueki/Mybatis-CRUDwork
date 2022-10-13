@@ -4,11 +4,7 @@
 <mapper namespace="com.training.Mybatiswork0920.mapper.HouseholdAccountMapper">
     <select id="findByCategory" resultType="com.training.Mybatiswork0920.entity.HouseholdAccount">
         SELECT * FROM accounts
-
-        <where>
-            <if test="category !=null">
-                category = #{category}
-            </if>
-        </where>
+        WHERE
+            category = #{category}
     </select>
 </mapper>
