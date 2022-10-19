@@ -1,5 +1,7 @@
 package com.training.Mybatiswork0920.controller;
 
+import com.training.Mybatiswork0920.Form.CreateForm;
+import com.training.Mybatiswork0920.Form.UpdateForm;
 import com.training.Mybatiswork0920.service.HouseholdAccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +43,7 @@ public class HouseholdAccountController {
     }
 
     @PatchMapping("accounts/{id}")
-    public ResponseEntity<Map<String, String>> update(@RequestBody CreateForm form, @PathVariable("id") int id) {
+    public ResponseEntity<Map<String, String>> update(@RequestBody UpdateForm form, @PathVariable("id") int id) {
         // 更新処理は省略
         // 引数のidに
         return ResponseEntity.ok(Map.of("message", "name successfully updated"));
@@ -52,33 +54,4 @@ public class HouseholdAccountController {
         return Map.of("message", "ID '" + id + "'のデータを削除しました。");
     }
 
-    public static class CreateForm {
-        private String ex_in;
-        private String category;
-        private int amount;
-
-        public String getEx_in() {
-            return ex_in;
-        }
-
-        public void setEx_in(String ex_in) {
-            this.ex_in = ex_in;
-        }
-
-        public String getCategory() {
-            return category;
-        }
-
-        public void setCategory(String category) {
-            this.category = category;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-    }
 }
