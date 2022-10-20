@@ -1,6 +1,6 @@
 package com.training.Mybatiswork0920.Form;
 
-public class UpdateForm {
+public class HouseholdAccountForm {
     private String ex_in;
     private String category;
     private int amount;
@@ -28,5 +28,4 @@ public class UpdateForm {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
 }
