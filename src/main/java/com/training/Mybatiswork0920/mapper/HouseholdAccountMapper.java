@@ -12,6 +12,9 @@ public interface HouseholdAccountMapper {
     @Select("SELECT * FROM accounts")
     List<HouseholdAccount> findAll();
 
+
+    Optional<HouseholdAccount> findByCategory(String category);
+
     @Select("SELECT * FROM accounts WHERE id = #{id}")
     Optional<HouseholdAccount> findById(int id);
 

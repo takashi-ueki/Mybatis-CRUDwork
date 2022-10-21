@@ -5,6 +5,7 @@ import com.training.Mybatiswork0920.mapper.HouseholdAccountMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HouseholdAccountServiceImpl implements HouseholdAccountService {
@@ -18,6 +19,11 @@ public class HouseholdAccountServiceImpl implements HouseholdAccountService {
     @Override //インターフェースの処理を実行
     public List<HouseholdAccount> findAll() {
         return householdAccountMapper.findAll();
+    }
+
+    @Override
+    public Optional<HouseholdAccount> findByCategory(String category) {
+        return householdAccountMapper.findByCategory(category);
     }
 
     @Override

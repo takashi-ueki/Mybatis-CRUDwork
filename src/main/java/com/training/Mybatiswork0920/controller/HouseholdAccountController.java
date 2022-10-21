@@ -1,5 +1,6 @@
 package com.training.Mybatiswork0920.controller;
 
+import com.training.Mybatiswork0920.Form.HouseholdAccountForm;
 import com.training.Mybatiswork0920.service.HouseholdAccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class HouseholdAccountController {
     }
 
     @PostMapping("/accounts")
-    public ResponseEntity<String> create(@RequestBody CreateForm form) {
+    public ResponseEntity<String> create(@RequestBody HouseholdAccountForm form) {
         // 登録処理は省略
         String urlString = "http://localhost:8080";
         URI url = UriComponentsBuilder.fromUriString(urlString)
@@ -29,12 +30,19 @@ public class HouseholdAccountController {
     }
 
     @GetMapping("/accounts")
-    public List<HouseholdAccountResponse> getNames() {
+    public List<HouseholdAccountResponse> getAccount() {
         return householdAccountService.findAll().stream().map(HouseholdAccountResponse::new).toList();
     }
 
+    @GetMapping("/accounts/search")
+    public List<HouseholdAccountResponse> getAccountsByCategory(@RequestParam(name = "category", defaultValue = "") String category) {
+        return householdAccountService.findByCategory(category).stream()
+                .map(HouseholdAccountResponse::new)
+                .toList();
+    }
+
     @PatchMapping("accounts/{id}")
-    public ResponseEntity<Map<String, String>> update(@RequestBody CreateForm form, @PathVariable("id") int id) {
+    public ResponseEntity<Map<String, String>> update(@RequestBody HouseholdAccountForm form, @PathVariable("id") int id) {
         // 更新処理は省略
         // 引数のidに
         return ResponseEntity.ok(Map.of("message", "name successfully updated"));
@@ -45,33 +53,4 @@ public class HouseholdAccountController {
         return Map.of("message", "ID '" + id + "'のデータを削除しました。");
     }
 
-    public static class CreateForm {
-        private String ex_in;
-        private String category;
-        private int amount;
-
-        public String getEx_in() {
-            return ex_in;
-        }
-
-        public void setEx_in(String ex_in) {
-            this.ex_in = ex_in;
-        }
-
-        public String getCategory() {
-            return category;
-        }
-
-        public void setCategory(String category) {
-            this.category = category;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-    }
 }
